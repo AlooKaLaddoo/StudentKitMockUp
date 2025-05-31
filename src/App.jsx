@@ -14,9 +14,186 @@ import {
   Code,
   Terminal,
   Cpu,
-  Zap
+  Zap,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react'
 import './App.css'
+
+// Gallery Component for IIIT-H Campus Images
+function Gallery() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  
+  // List of campus images
+  const campusImages = [
+    { src: '../img/01-1-scaled.jpg', alt: 'IIIT-H Campus View 1' },
+    { src: '../img/03-scaled.jpg', alt: 'IIIT-H Campus View 2' },
+    { src: '../img/04-scaled.jpg', alt: 'IIIT-H Campus View 3' },
+    { src: '../img/041-1.jpg', alt: 'IIIT-H Campus View 4' },
+    { src: '../img/05-1.jpg', alt: 'IIIT-H Campus View 5' },
+    { src: '../img/05-scaled.jpeg', alt: 'IIIT-H Campus View 6' },
+    { src: '../img/06-scaled.jpg', alt: 'IIIT-H Campus View 7' },
+    { src: '../img/07-scaled.jpeg', alt: 'IIIT-H Campus View 8' },
+    { src: '../img/071-1.jpg', alt: 'IIIT-H Campus View 9' },
+    { src: '../img/08-scaled.jpg', alt: 'IIIT-H Campus View 10' },
+    { src: '../img/081-1.jpg', alt: 'IIIT-H Campus View 11' },
+    { src: '../img/09-1.jpeg', alt: 'IIIT-H Campus View 12' },
+    { src: '../img/09-scaled.jpg', alt: 'IIIT-H Campus View 13' },
+    { src: '../img/10-scaled.jpeg', alt: 'IIIT-H Campus View 14' },
+    { src: '../img/11.jpg', alt: 'IIIT-H Campus View 15' },
+    { src: '../img/12-scaled.jpeg', alt: 'IIIT-H Campus View 16' },
+    { src: '../img/13-scaled.jpeg', alt: 'IIIT-H Campus View 17' },
+    { src: '../img/14-scaled.jpeg', alt: 'IIIT-H Campus View 18' },
+    { src: '../img/15-scaled.jpeg', alt: 'IIIT-H Campus View 19' },
+    { src: '../img/15-scaled.jpg', alt: 'IIIT-H Campus View 20' },
+    { src: '../img/16-scaled.jpg', alt: 'IIIT-H Campus View 21' },
+    { src: '../img/19-1.jpeg', alt: 'IIIT-H Campus View 22' },
+    { src: '../img/CIE-3-scaled.jpg', alt: 'IIIT-H CIE Building' },
+    { src: '../img/CIE-4-scaled.jpg', alt: 'IIIT-H CIE Building 2' },
+    { src: '../img/DSC5395-scaled.jpg', alt: 'IIIT-H Campus Life' },
+    { src: '../img/DSC5492-scaled.jpg', alt: 'IIIT-H Campus Life 2' },
+    { src: '../img/DSC6378-scaled.jpg', alt: 'IIIT-H Campus Life 3' },
+    { src: '../img/DSC_5424-scaled.jpeg', alt: 'IIIT-H Campus Life 4' },
+    { src: '../img/IMG20190730155208-scaled.jpg', alt: 'IIIT-H Campus View' },
+    { src: '../img/b6fcc303-99b2-4ca3-bdd4-3d0eac9eae3b.jpg', alt: 'IIIT-H Campus' },
+    { src: '../img/ecell-auction-day1-2-scaled.jpg', alt: 'IIIT-H E-Cell Event' },
+    { src: '../img/sports2-scaled.jpg', alt: 'IIIT-H Sports Facilities' }
+  ]
+
+  // Auto-change images every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === campusImages.length - 1 ? 0 : prevIndex + 1
+      )
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [campusImages.length])
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === campusImages.length - 1 ? 0 : prevIndex + 1
+    )
+  }
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) => 
+      prevIndex === 0 ? campusImages.length - 1 : prevIndex - 1
+    )
+  }
+
+  return (
+    <motion.section
+      className="gallery-section"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 1.2 }}
+    >
+      <div className="gallery-container">
+        <motion.div
+          className="gallery-header"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.4 }}
+        >
+          <div className="gallery-title-container">
+            <Camera size={32} />
+            <h2 className="gallery-title">
+              <span className="code-bracket">{'{'}</span>
+              Campus <span className="highlight">Gallery</span>
+              <span className="code-bracket">{'}'}</span>
+            </h2>
+          </div>
+          <div className="terminal-subtitle">
+            <span className="terminal-prompt">gallery@iiith:~$</span>
+            <span className="terminal-command">./show_campus_beauty.sh</span>
+          </div>
+          <p className="gallery-subtitle">
+            Take a virtual tour of our beautiful campus
+          </p>
+        </motion.div>
+
+        <div className="gallery-main">
+          <motion.div
+            className="gallery-display"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 1.6 }}
+          >
+            <button 
+              className="gallery-nav gallery-nav-left"
+              onClick={prevImage}
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            <div className="gallery-image-container">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentImageIndex}
+                  src={campusImages[currentImageIndex].src}
+                  alt={campusImages[currentImageIndex].alt}
+                  className="gallery-image"
+                  initial={{ opacity: 0, x: 300 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -300 }}
+                  transition={{ duration: 0.5 }}
+                />
+              </AnimatePresence>
+              
+              <div className="gallery-overlay">
+                <div className="gallery-info">
+                  {/* <p className="gallery-caption">{campusImages[currentImageIndex].alt}</p> */}
+                  <div className="gallery-counter">
+                    {currentImageIndex + 1} / {campusImages.length}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button 
+              className="gallery-nav gallery-nav-right"
+              onClick={nextImage}
+              aria-label="Next image"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </motion.div>
+
+          <div className="gallery-thumbnails">
+            {campusImages.map((image, index) => (
+              <motion.button
+                key={index}
+                className={`gallery-thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                onClick={() => setCurrentImageIndex(index)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 1.8 + index * 0.02 }}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="thumbnail-image"
+                />
+              </motion.button>
+            ))}
+          </div>
+
+          <div className="gallery-progress">
+            <div 
+              className="gallery-progress-bar"
+              style={{ width: `${((currentImageIndex + 1) / campusImages.length) * 100}%` }}
+            />
+          </div>
+        </div>
+      </div>
+    </motion.section>
+  )
+}
 
 function App() {
   const [isDark, setIsDark] = useState(false)
@@ -198,7 +375,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Your comprehensive guide to starting your CS journey at IIIT Hyderabad
+            Your comprehensive guide to starting your journey at IIIT Hyderabad
           </motion.p>
         </div>
       </motion.header>
@@ -245,6 +422,9 @@ function App() {
           })}
         </div>
       </motion.main>
+
+      {/* Gallery Section */}
+      <Gallery />
 
       {/* Modal for Category Details */}
       <AnimatePresence>
