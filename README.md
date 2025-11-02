@@ -1,34 +1,34 @@
-# 🎓 IIIT-H Student Kit | Fresher's Guide
+# IIIT-H Student Kit | Fresher's Guide
 
 A beautiful, modern static website built with React + Vite to help new students at IIIT Hyderabad navigate their first few days of college life.
 
  ![React](https://img.shields.io/badge/React-18.3.1-blue) ![Vite](https://img.shields.io/badge/Vite-6.3.5-purple)
 
-## ✨ Features
+## Features
 
-### 🎨 Design
+### Design
 - **Modern & Minimal**: Clean, professional design with gradient cards
 - **Dual Theme Support**: Seamless light/dark mode toggle
 - **Responsive Design**: Perfect on desktop, tablet, and mobile devices
 - **Smooth Animations**: Framer Motion powered interactions
 - **Glass-morphism Effects**: Modern backdrop blur and transparency
 
-### 🏫 Content Categories
-- 📄 **Documents Required**: Essential paperwork for admission
-- 📅 **Induction Schedule**: Complete orientation timeline
-- 👥 **Echoes from Alumni**: Valuable insights from seniors
-- 🏨 **Hotels near IIIT-H**: Accommodation for visiting families
-- 🗺️ **How to reach campus**: Travel guides and directions
-- 📸 **Places to Visit**: Tourist attractions around Hyderabad
-- 📖 **Informal Brochure**: Unofficial campus life guide
+### Content Categories
+-  **Documents Required**: Essential paperwork for admission
+-  **Induction Schedule**: Complete orientation timeline
+-  **Echoes from Alumni**: Valuable insights from seniors
+-  **Hotels near IIIT-H**: Accommodation for visiting families
+-  **How to reach campus**: Travel guides and directions
+-  **Places to Visit**: Tourist attractions around Hyderabad
+-  **Informal Brochure**: Unofficial campus life guide
 
-### 🎯 User Experience
+### User Experience
 - **Single Page Layout**: All information accessible without scrolling
 - **Modal Navigation**: Clean popup interface for detailed content
 - **Floating Background**: Subtle animated shapes for visual appeal
 - **Fast Loading**: Optimized with Vite for instant page loads
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js (v16 or higher)
@@ -57,7 +57,7 @@ A beautiful, modern static website built with React + Vite to help new students 
    http://localhost:5173
    ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 StudentKitMockUp/
@@ -72,7 +72,7 @@ StudentKitMockUp/
 └── README.md                 # This file
 ```
 
-## 🎨 Technology Stack
+## Technology Stack
 
 ### Core
 - **React 18.3.1** - Modern UI library
@@ -88,7 +88,7 @@ StudentKitMockUp/
 - **Lucide React** - Beautiful, consistent icons
 - **CSS Variables** - Dynamic theming system
 
-## 🎯 Key Components
+## Key Components
 
 ### Header Section
 - Animated title with gradient highlight
@@ -106,7 +106,7 @@ StudentKitMockUp/
 - Theme-aware opacity levels
 - Performance-optimized animations
 
-## 📱 Responsive Breakpoints
+## Responsive Breakpoints
 
 | Device | Breakpoint | Grid Layout |
 |--------|------------|-------------|
